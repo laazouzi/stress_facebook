@@ -16,7 +16,7 @@ class StressFacebook < SimpleDaemon::Base
 	
 	def self.stress_it
 		begin
-			@logger.info "execute user task"
+			@logger.info "start a daemon iteration"
       Entry.get_graph_api_responses(@logger)
 		rescue  Exception => e
       ExceptionLog.create(:message => e.message, :backtrace => e.backtrace)
@@ -28,16 +28,17 @@ class StressFacebook < SimpleDaemon::Base
 				@logger.info e.backtrace.join("\n")
 			end        
 		end    
-    self.stress_it
+    EM.add_timer(1) { self.stress_it }
 	end 
       
   def self.start        
     STDOUT.sync = true
-    @logger = Logger.new(STDOUT)        
-    StressFacebook.stress_it
+    @logger = Logger.new(STDOUT)
+    EM.run { StressFacebook.stress_it }
   end
 
   def self.stop
+    EM.stop
     puts "Stopping processor" 
   end  
 end

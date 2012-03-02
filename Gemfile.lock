@@ -34,6 +34,7 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    eventmachine (0.12.10)
     httparty (0.8.1)
       multi_json
       multi_xml
@@ -83,6 +84,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  eventmachine (= 0.12.10)
   httparty
   jquery-rails
   json (= 1.2.3)

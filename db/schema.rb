@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301172745) do
+ActiveRecord::Schema.define(:version => 20120302152009) do
 
   create_table "entries", :force => true do |t|
     t.integer  "http_code"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(:version => 20120301172745) do
 
   create_table "facebook_accounts", :force => true do |t|
     t.string "token", :null => false
+  end
+
+  create_table "facebook_fan_pages", :force => true do |t|
+    t.string   "page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
