@@ -1,0 +1,29 @@
+<div id="edit_company" class="main_list" style = "margin-left: 50px;">
+  
+    <p class = "twitter_intro">
+    <%= 'Associer votre compte facebook à votre compte Alerti pour pourvoir inclure des pages de fan facebook dans les sources de recherche de vos alertes.' %>
+  </p>
+
+
+<% if @facebook_accounts.count > 0 %>
+<table border="1">
+  <tr>
+    <th><%= 'id' %></th>
+    <th><%= 'token' %></th>
+  </tr>
+  <% @facebook_accounts.each do |account|%>
+    <tr>
+      <td>
+        <%= account.id %>
+      </td>
+      <td>
+        <%= account.token %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<% end%>
+      
+<div>
+  <%= link_to('Add a new facebook account', AlertiFacebook.new.auth_link(facebook_accounts_url)) %>
+</div>

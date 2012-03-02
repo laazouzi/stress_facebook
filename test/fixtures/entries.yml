@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  http_code: 1
+  response_body: MyText
+
+two:
+  http_code: 1
+  response_body: MyText
